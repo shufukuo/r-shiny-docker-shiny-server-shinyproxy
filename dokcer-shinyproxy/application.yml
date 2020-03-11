@@ -1,0 +1,32 @@
+proxy:
+  title: myapp
+  #hide-navbar: false
+  hide-navbar: true
+  landing-page: /
+  heartbeat-rate: 10000
+  heartbeat-timeout: 30000
+  port: 8080
+  #authentication: simple
+  #admin-groups: admins
+  #users:
+  #- name: test
+  #  password: test
+  docker:
+    internal-networking: true
+  specs:
+  - id: myapp
+    display-name: myapp-display
+    description: myapp-desc
+    #container-cmd: ["/usr/bin/shiny-server.sh"]
+    container-cmd: ["R", "-e", "shiny::runApp(appDir = '/srv/shiny-server/myapp', port = 3838, host = '0.0.0.0')"]
+    container-image: docker-shiny
+    container-network: shiny-net
+    container-volumes: ["/etc/localtime:/etc/localtime:ro", "{myapp_directory}:/srv/shiny-server/myapp"]
+  - id: yourapp
+    display-name: yourapp-display
+    description: yourapp-desc
+    #container-cmd: ["/usr/bin/shiny-server.sh"]
+    container-cmd: ["R", "-e", "shiny::runApp(appDir = '/srv/shiny-server/yourapp', port = 3838, host = '0.0.0.0')"]
+    container-image: docker-shiny
+    container-network: shiny-net
+    container-volumes: ["/etc/localtime:/etc/localtime:ro", "{yourapp_directory}:/srv/shiny-server/yourapp"]
