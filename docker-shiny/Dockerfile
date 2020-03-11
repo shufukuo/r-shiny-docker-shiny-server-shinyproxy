@@ -26,6 +26,7 @@ COPY shiny-server.sh /usr/bin/shiny-server.sh
 
 # create folder of shiny app files
 RUN mkdir /srv/shiny-server/myapp
+RUN mkdir /srv/shiny-server/yourapp
 
 #RUN chmod -R 755 /srv/shiny-server/
 
