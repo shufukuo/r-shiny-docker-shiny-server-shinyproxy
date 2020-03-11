@@ -18,6 +18,11 @@ docker run -p 3838:3838 \
 
 ### Docker & ShinyProxy
 ```
+cd /.../docker-shiny
+
+# build docker image - docker-shiny
+docker build -t docker-shiny .
+
 cd /.../docker-shinyproxy
 
 # build docker image - docker-shinyproxy
